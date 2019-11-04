@@ -11,7 +11,9 @@ For example, if the input is 'Welcome', the output will be:
 
 const howMuchPencil = (str) => {
   let result = [];
-  // Solution code here...
+  for (let i=0; i<str.length+1; i++) {
+    result[i] = str.slice(i);
+  }
   return result;
 };
 
@@ -22,7 +24,8 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
 const wordsToCharList = (arr) => {
-  // Solution code here...
+  let chars = arr.split('');
+  return chars;
 };
 
 
@@ -65,9 +68,18 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
-  // Solution code here...
+  let ingredients = recipe.ingredients
+  for (let i = 0; i < ingredients.length; i++) {
+    let foodItem= ingredients[0].slice( '' );
+    console.log (foodItem);
+    foodItem.shift(1);
+    foodItem.shift(1);
+    console.log ('Slice:',foodItem)
+    // foodItem.slice(1)
+  }
   return result;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -76,8 +88,16 @@ You may also use other string or array methods.
 ------------------------------------------------------------------------------------------------ */
 
 const splitFoods = (recipe) => {
+  let ingredients = recipe.ingredients
   let result = [];
-  // Solution code here...
+  for (let i = 0; i < ingredients.length; i++) {
+    let foodItem = ingredients[i].split(' ')
+    console.log (foodItem);
+    foodItem = foodItem.slice(2)
+    console.log (foodItem);
+    let newSplitFood= foodItem.join(' ')
+    result.push(newSplitFood)
+  }
   return result;
 };
 
@@ -89,8 +109,11 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 ------------------------------------------------------------------------------------------------ */
 
 const stepActions = (recipe) => {
-  let result = [];
-  // Solution code here...
+  let result = [steps];
+  let steps = recipe
+  for (let i=0; i<recipe.length+1; i++) {
+    result[i] = recipe.slice(' ',1);
+  }
   return result;
 };
 
