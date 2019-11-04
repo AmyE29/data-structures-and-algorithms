@@ -95,8 +95,6 @@ const splitFoods = (recipe) => {
     console.log (foodItem);
     foodItem = foodItem.slice(2)
     console.log (foodItem);
-    let newSplitFood= foodItem.join(' ')
-    result.push(newSplitFood)
   }
   return result;
 };
