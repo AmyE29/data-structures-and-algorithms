@@ -75,6 +75,7 @@ const listFoods = (recipe) => {
   }
   return result;
 };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 Write a function named splitFoods that uses split to produce the same output as Challenge 3.
