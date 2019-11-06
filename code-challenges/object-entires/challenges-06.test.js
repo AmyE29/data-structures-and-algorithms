@@ -11,7 +11,7 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
 };
 
 const getCourseKeys = (obj) => {
-  // Solution code here...
+  return Object.keys(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,7 +67,9 @@ let characters = [
 
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  for (let i=0; i<arr.length; i++) {
+    houses[i] = arr[i].house;
+  }
   return houses;
 };
 
@@ -81,8 +83,16 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
-
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i].name === character){
+      let child = Object.values(arr[i].children);
+      if(child.length > 1){
+        return true;
+      }else {
+        return false;
+      }
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -92,7 +102,15 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].name === character) {
+      if (arr[i].children.length) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -101,7 +119,20 @@ Write a function named totalCharacters that takes in an array and returns the nu
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
-  // Solution code here...
+  let people = 0;
+  for (let i = 0; i < arr.length; i++) {
+    let name = arr[i].name;
+    let spouse = arr[i].spouse;
+    if(spouse !== null && arr[i].children !== [] ) {
+      arr[i].children.push(spouse);
+      arr[i].children.push(name);
+    } else {
+      arr[i].children.push(name);
+    }
+    let child = arr[i].children.length;
+    people += child;
+  }
+  return people;
 };
 
 /* ------------------------------------------------------------------------------------------------
