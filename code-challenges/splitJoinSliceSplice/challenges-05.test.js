@@ -65,20 +65,26 @@ const gruffaloCrumble = {
   ]
 };
 
-
 const listFoods = (recipe) => {
   let result = [];
   let ingredients = recipe.ingredients
+  console.log(ingredients)
   for (let i = 0; i < ingredients.length; i++) {
-    let foodItem= ingredients[0].slice( '' );
-    console.log (foodItem);
-    foodItem.shift(1);
-    foodItem.shift(1);
-    console.log ('Slice:',foodItem)
-    // foodItem.slice(1)
+    let foodItem = ingredients[i].slice('')
+    console.log (foodItem)
   }
   return result;
 };
+
+// const listFoods = (recipe) => {
+//   let result = [];
+//   recipe['ingredients'].forEach(el => {
+//     let ingredients = el.slice(el.indexOf(' ')+ 1)
+//     result.push(ingredients.slice(ingredients.indexOf(' ')+ 1))
+//   });
+//   return result;
+// };
+
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -88,13 +94,15 @@ You may also use other string or array methods.
 ------------------------------------------------------------------------------------------------ */
 
 const splitFoods = (recipe) => {
-  let ingredients = recipe.ingredients
   let result = [];
+  let ingredients = recipe.ingredients
   for (let i = 0; i < ingredients.length; i++) {
     let foodItem = ingredients[i].split(' ')
-    console.log (foodItem);
+    console.log (foodItem)
     foodItem = foodItem.slice(2)
-    console.log (foodItem);
+    console.log (foodItem)
+    let newSplitFood= foodItem.join(' ')
+    result.push(newSplitFood)
   }
   return result;
 };
@@ -107,10 +115,12 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 ------------------------------------------------------------------------------------------------ */
 
 const stepActions = (recipe) => {
-  let result = [steps];
-  let steps = recipe
-  for (let i=0; i<recipe.length+1; i++) {
-    result[i] = recipe.slice(' ',1);
+  let result = [];
+  // let steps = recipe.steps
+  for (let i = 0; i < recipe.steps.length; i++) {
+    let stepWords = recipe.steps[i].split(' ');
+    let item = stepWords[0];
+    result.push(item);
   }
   return result;
 };
@@ -126,8 +136,15 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const removeEvenValues = (arr) => {
-  // Solution code here...
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i] % 2 === 0){
+      arr.splice(i, 1);
+      i=0 ;
+    }
+  }
+  return arr;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7
@@ -141,7 +158,15 @@ removeLastCharacters('Gregor', 9) returns ''
 ------------------------------------------------------------------------------------------------ */
 
 const removeLastCharacters = (str, numberOfCharacters) => {
-  // Solution code here...
+  let lengthStr = str.length;
+  if(numberOfCharacters > lengthStr){
+    return '';
+  } else if(numberOfCharacters >= 0){
+    let shorterChar = str.slice(0, (lengthStr-numberOfCharacters));
+    return shorterChar;
+  } else {
+    return str;
+  }
 };
 
 
