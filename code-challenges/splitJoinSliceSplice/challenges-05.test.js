@@ -76,17 +76,6 @@ const listFoods = (recipe) => {
   return result;
 };
 
-// const listFoods = (recipe) => {
-//   let result = [];
-//   recipe['ingredients'].forEach(el => {
-//     let ingredients = el.slice(el.indexOf(' ')+ 1)
-//     result.push(ingredients.slice(ingredients.indexOf(' ')+ 1))
-//   });
-//   return result;
-// };
-
-
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 Write a function named splitFoods that uses split to produce the same output as Challenge 3.
