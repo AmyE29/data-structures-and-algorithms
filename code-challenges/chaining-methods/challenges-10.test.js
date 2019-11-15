@@ -12,6 +12,9 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
+let acc = input.reduce((acc, target) => acc.set(target, 1 + (acc.get(val) || 0)), new Map());
+
+console.log(acc);
 };
 
 
