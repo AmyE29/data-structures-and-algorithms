@@ -76,14 +76,6 @@ const listFoods = (recipe) => {
   return result;
 };
 
-// const listFoods = (recipe) => {
-//   let result = [];
-//   recipe['ingredients'].forEach(el => {
-//     let ingredients = el.slice(el.indexOf(' ')+ 1)
-//     result.push(ingredients.slice(ingredients.indexOf(' ')+ 1))
-//   });
-//   return result;
-// };
 
 
 
