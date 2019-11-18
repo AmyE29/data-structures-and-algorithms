@@ -12,9 +12,14 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
-let acc = input.reduce((acc, target) => acc.set(target, 1 + (acc.get(val) || 0)), new Map());
-
-console.log(acc);
+  let filtered = input.map(index => {
+    let targets = index.filter(n => n===target);
+    return targets.length;
+  })
+  return filtered.reduce( function(accumulator, value) {
+    accumulator = accumulator + value;
+    return accumulator;
+  }, 0);
 };
 
 
@@ -29,8 +34,11 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
 const totalSum = (input) => {
-  // Solution code here...
-};
+  let arr = input.reduce( function(accumulator, value) {
+    return accumulator.concat(value);
+  }, []);
+  return arr.reduce((accumulator, value) => accumulator + value, 0);
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -45,7 +53,11 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
+  return input.map(value => {
+    return value.filter(num => typeof num === 'number')
+  }).map(value => {
+    return value.filter(num => num%5===0);
+  }).map(value => {return value.map(x => {return Math.pow(2, x)})});
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -111,7 +123,14 @@ let starWarsData = [{
 }];
 
 let findMaleAndFemale = (data) => {
-  // Solution code here...
+  let newArray = [];
+  for (let i=0; i<data.length; i++) {
+    if (data[i].gender === 'female' || data[i].gender === 'male') {
+      newArray.push(data[i].name);
+    }
+  }
+  let string = newArray.join(' and ');
+  return string;
 };
 
 /* ------------------------------------------------------------------------------------------------
