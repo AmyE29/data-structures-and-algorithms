@@ -69,6 +69,7 @@ const validatePhoneNumber = (phoneNumber) => {
   }
 };
 
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4 - Stretch Goal
 

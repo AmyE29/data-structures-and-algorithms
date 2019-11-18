@@ -1,4 +1,4 @@
-/* eslint-disable eol-last */
+
 'use strict';
 
 /* ------------------------------------------------------------------------------------------------
@@ -24,7 +24,12 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  return str.match(/\b[A-Z][A-Za-z]+\b/g);
+  let regex = /\b[A-Z][A-Za-z]+\b/g;
+  if (regex.test(str)===true) {
+    return str.match(regex);
+  } else {
+    return [];
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -32,16 +37,18 @@ CHALLENGE 3
 Write a function named citiesAtoJ that takes in an array of city names and uses a regular expression pattern to return a new array containing any cities that begin with the letters A through J, inclusive.
 ------------------------------------------------------------------------------------------------ */
 
+
 const citiesAtoJ = (arr) => {
-  let str = JSON.stringify(arr);
-  regex = /(?<!\s)[A-J]+[a-z]+/gm;
-  let match = str.match(regex);
-  if(Array.isArray(match)){
-    return match;
-  } else {
-    return [];
-  }
-};
+  let newArray = [];
+  let regex = /^[A-J]\w+/;
+  arr.forEach(city => {
+    if (regex.test(city)===true) {
+      newArray.push(city);
+    }
+  });
+  return newArray;
+}
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -51,6 +58,10 @@ If the user enters any of these four inputs, return true. For any other input, r
 Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
+const matchMonth = (input) => {
+  let regex = /\b[Oo]ct(ober)*\b/;
+  return regex.test(input);
+};
 
 
 /* ------------------------------------------------------------------------------------------------

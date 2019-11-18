@@ -31,10 +31,6 @@ const findHappiness = (arr) => {
   return happiness;
 };
 
-
-
-// CHALLENGE: return an array of names that contain 'ch'
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
@@ -57,9 +53,14 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-
+  let odd = [];
+  for (var i = 0; i < str.length; i++) {
+    if (str[i] !== str[0]) {
+      odd = str[i];
+    }
+  }
+  return odd;
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
@@ -67,10 +68,10 @@ Write a function named allHappy that takes in an array of strings and returns a 
 ------------------------------------------------------------------------------------------------ */
 
 const allHappy = (arr) => {
-  arr.includes(':)');
-  return allHappy;
+  return arr.every(string => {
+    return string.includes(':)')
+  })
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
@@ -78,7 +79,9 @@ Write a function named findAnything that takes in an array of strings, along wit
 ------------------------------------------------------------------------------------------------ */
 
 const findAnything = (arr, target) => {
-  // Solution code here...
+  return arr.filter(string => {
+    return string.includes(target)
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -88,7 +91,9 @@ Write a function named findEvery that takes in an array of strings, along with a
 ------------------------------------------------------------------------------------------------ */
 
 const findEvery = (arr, target) => {
-  // Solution code here...
+  return arr.every(string => {
+    return string.includes(target)
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -104,7 +109,13 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 ------------------------------------------------------------------------------------------------ */
 
 const unenrollBrook = (arr) => {
-  // Solution code here...
+  return arr.map(course => {
+    return course.filter(enroll => {
+      if(enroll.includes('Brook')){
+        return false;
+      } else {return true}
+    })
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
