@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 'use strict';
 
 /* ------------------------------------------------------------------------------------------------
@@ -22,17 +23,22 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
+const hourlySales = [];
 const grandTotal = (stores) => {
-  let cookieTotal = [];
-  for (let i = 0; i < stores[0].length; i++){
-    let total = 0;
-    for (let j = 0; j < cookieStores.length; j++){
-      total += cookieStores[j][i];
-    }
-    cookieTotal.push(total);
+  for (let i = 0; i < hoursOpen.length ; i++){
+    let numberCookies = stores.map(number => {
+      return number[i];
+    })
+    let totalCookies= numberCookies.reduce( (a,b) => a+b);
+    hourlySales.push(totalCookies);
   }
-  return cookieTotal;
-};
+  return hourlySales;
+}
+
+
+
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -45,7 +51,13 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  let cookieData = [];
+  for(let i = 0 ; i < hours.length; i++){
+    for(let j = 0 ; j < data.length ; j++){
+    }
+    cookieData.push({sales: `${data[i]} cookies`, time: hours[i]})
+  }
+  return cookieData
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -65,9 +77,14 @@ const errands = [
     items: [ { name: 'Cans of food', quantity: 8 }, { name: 'Treats', quantity: 24 }, { name: 'Leash', quantity: 1 } ]
   }
 ];
-
 const howManyTreats = (arr) => {
-  // Solution code here...
+  for (let i=0; i<arr.length; i++) {
+    for (let j=0; j<arr[i].items.length; j++) {
+      if (arr[i].items[j].name === 'Treats') {
+        return arr[i].items[j].quantity;
+      }
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -89,9 +106,10 @@ The top row of the board is considered row zero and row numbers increase as they
 ------------------------------------------------------------------------------------------------ */
 
 const battleship = (board, row, col) => {
-  //  Solution code here...
+  if(board[row][col] === '#'){
+    return 'hit';
+  } else {return 'miss';}
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
@@ -101,7 +119,13 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 ------------------------------------------------------------------------------------------------ */
 
 const calculateProduct = (numbers) => {
-  // Solution code here...
+  let product = 1;
+  for (let i=0; i<numbers.length; i++) {
+    for (let j=0; j<numbers[i].length; j++) {
+      product = product*numbers[i][j];
+    }
+  }
+  return product;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -121,9 +145,16 @@ const weeklyTemperatures = [
 ];
 
 const averageDailyTemperature = (weather) => {
-  // Solution code here...
+  let count = 0;
+  let total= 0;
+  for (let i=0; i<weather.length; i++) {
+    for (let j=0; j<weather[i].length; j++) {
+      count++;
+      total= total+ weather[i][j];
+    }
+  }
+  return total/count;
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7
 
@@ -152,7 +183,7 @@ Write a function called excel that accepts a string representing rows and column
 
 Rows are seperated by newline "\n" characters. Columns are seperated by commas. For example, '1,1,1\n4,4,4\n9,9,9' represents a 3x3 table.
 
-The function should parse the string as rows and columns and compute the sum of the values for each row. Return an array with the sum of the values in each row.
+The function should parse the string as rows and columns and compute the totalof the values for each row. Return an array with the sum of the values in each row.
 
 For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */
